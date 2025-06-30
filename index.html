@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andon Labs Style Landing Page</title>
+    <title>Nyra - landing page</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -13,7 +13,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="#home"><img src="assets/nyra-logo.png" alt="NYRA Logo" class="main-logo" style="height:48px; width:auto; max-width:180px; border-radius:12px;"></a>
+                <a href="#home"><img src="assets/nyra-name.jpeg" alt="NYRA Logo" class="main-logo" style="height:48px; width:auto; max-width:180px; border-radius:12px;"></a>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -47,7 +47,7 @@
                         Balance isn't something you chase. It's something you build one choice at a time..
                     </p>
                     <div class="hero-buttons">
-                        <button class="btn btn-secondary">Learn More</button>
+                        <a href="#features" class="btn btn-secondary">Learn More</a>
                     </div>
                 </div>
                 <div class="hero-logo">
@@ -61,7 +61,7 @@
                 <div class="coming-soon-badge">
                     <i class="fas fa-clock"></i> Coming Soon
                 </div>
-                <h2>Revolutionary New Product</h2>
+                <h2>Join the waitlist</h2>
                 <p>
                     We're working on something amazing! Be the first to know when our 
                     groundbreaking new product launches. Sign up for early access and 
@@ -69,7 +69,7 @@
                 </p>
                 <form class="coming-soon-form">
                     <input type="email" placeholder="Enter your email for early access" required>
-                    <button type="submit" class="btn">Notify Me</button>
+                    <a href="mailto:info@nyra.com.mx?subject=Waitlist Signup&body=Please add me to the waitlist for early access to your new product." class="btn">Notify Me</a>
                 </form>
             </div>
         </div>
@@ -90,7 +90,7 @@
                 <div class="feature-card">
                     <!-- <div class="feature-date">February 25, 2025</div> -->
                     <h3>Integrated</h3>
-                    <p>Anthropic x Andon Labs: Can Claude run a vending machine business? We let Claude run a vending machine in Anthropic's office as a small business for about a month.</p>
+                    <p>The app is powered by ML models that learn and adapt to your body and habits. Recommendations are personalized to you, not a one-size-fits-all approach.</p>
                 </div>
                 <div class="feature-card">
                     <!-- <div class="feature-date">February 25, 2025</div> -->
@@ -130,7 +130,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Get in touch</h2>
-                <p>Interested in what we do? Contact us at founders (at) company.com, or reach to us on our socials.</p>
+                <p>Interested in what we do? Contact us at info@nyra.com.mx, or reach to us on our socials.</p>
             </div>
             
             <!-- Email Contact Info -->
@@ -139,26 +139,26 @@
                     <i class="fas fa-envelope"></i>
                     <div>
                         <h4>Email</h4>
-                        <p>founders@company.com</p>
+                        <p> info@nyra.com.mx</p>
                     </div>
                 </div>
             </div>
             
             <div class="contact-content">
-                <form class="contact-form">
+                <form class="contact-form" id="contactForm">
                     <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
+                        <input type="text" id="contactName" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
+                        <input type="email" id="contactEmail" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Subject" required>
+                        <input type="text" id="contactSubject" placeholder="Subject" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <textarea id="contactMessage" placeholder="Your Message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="button" class="btn btn-primary" onclick="sendContactMessage()">Send Message</button>
                 </form>
             </div>
         </div>
@@ -192,5 +192,20 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        function sendContactMessage() {
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
+            
+            if (name && email && subject && message) {
+                const mailtoLink = `mailto:info@nyra.com.mx?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+                window.location.href = mailtoLink;
+            } else {
+                alert('Please fill in all fields before sending.');
+            }
+        }
+    </script>
 </body>
 </html> 
